@@ -11,10 +11,10 @@ export async function uploadCSV(req, res) {
             const fullName = `${name.firstName} ${name.lastName}`;
 
             await pool.query(
-                `INSERT INTO public.users (name, age, address, additional_info, serial4)
-                 VALUES ($1, $2, $3, $4)`,
+                `INSERT INTO public.users (name, age, address, additional_info,serial4)
+                 VALUES ($1, $2, $3, $4, $5)`,
                 [fullName, age, JSON.stringify(record.address), JSON.stringify(additionalInfo), 1]
-            );
+            );            
         }
 
         res.status(200).send('CSV data uploaded successfully!');
