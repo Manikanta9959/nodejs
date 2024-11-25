@@ -2,7 +2,6 @@ import express from "express";
 import routes from "./routes.js";
 import cors from "cors";
 import swagger from "./swagger.js";
-import logger from "./logger.js";
 import config from "./config.js";
 
 const app = express();

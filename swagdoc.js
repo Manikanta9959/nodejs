@@ -2,7 +2,7 @@ const swaggerDoc = {
     openapi: "3.0.0",
     info: {
       title: "CSV to JSON Converter API",
-      description: "API for converting CSV files to JSON and uploading to a MYSQL database.",
+      description: "API for converting CSV files to JSON and uploading to a POSTGRES database.",
       contact: {
         name: "CSV API Support",
         email: "sivachallano1@gmail.com",
@@ -20,7 +20,7 @@ const swaggerDoc = {
         post: {
           tags: ["CSV Operations"],
           summary: "Upload CSV file and insert records into the database",
-          description: "Parses a CSV file and uploads the data into the MYSQL database.",
+          description: "Parses a CSV file and uploads the data into the POSTGRES database.",
           operationId: "uploadCSV",
           requestBody: {
             content: {
