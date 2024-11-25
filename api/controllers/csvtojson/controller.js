@@ -7,13 +7,13 @@ export async function uploadCSV(req, res) {
         const records = parseCSV(config.csvFilePath);
 
         for (const record of records) {
-            const { name, age, ...additionalInfo } = record;
+            const { name, age, address, ...additionalInfo } = record;
             const fullName = `${name.firstName} ${name.lastName}`;
 
             await pool.query(
                 `INSERT INTO public.users (name, age, address, additional_info,serial4)
                  VALUES ($1, $2, $3, $4, $5)`,
-                [fullName, age, JSON.stringify(record.address), JSON.stringify(additionalInfo), 1]
+                [fullName, age, JSON.stringify(address), JSON.stringify(additionalInfo), 1]
             );            
         }
 
