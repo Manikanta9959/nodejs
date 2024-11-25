@@ -1,14 +1,23 @@
 import fs from 'fs';
+import readline from 'readline';
 
-export function parseCSV(filePath) {
-    const csvData = fs.readFileSync(filePath, 'utf-8');
-    const lines = csvData.split('\n');
-    const headers = lines.shift().split(',');
+// Stream-based CSV parser for large files
+export async function parseCSVStream(filePath) {
+    const fileStream = fs.createReadStream(filePath);
+    const rl = readline.createInterface({ input: fileStream });
 
-    return lines.map(line => {
+    const records = [];
+    let headers;
+
+    for await (const line of rl) {
         const values = line.split(',');
-        const record = {};
 
+        if (!headers) {
+            headers = values;
+            continue;
+        }
+
+        const record = {};
         headers.forEach((header, index) => {
             const keys = header.split('.');
             let current = record;
@@ -23,6 +32,8 @@ export function parseCSV(filePath) {
             });
         });
 
-        return record;
-    });
+        records.push(record);
+    }
+
+    return records;
 }
