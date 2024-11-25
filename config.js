@@ -2,13 +2,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const config = {
-    LOG_DIR : process.env.LOG_DIR,
-    APP_PORT : process.env.APP_PORT,
+    APP_PORT : process.env.APP_PORT || 4000,
     csvFilePath: process.env.CSV_FILE_PATH || './input.csv',
     HOST: process.env.HOST || 'localhost',
-    PORT: process.env.PORT || 3306,
-    USER: process.env.USER || 'root',
+    PORT: process.env.PORT || 5432,
+    USER: process.env.USER || 'postgres',
     PASSWORD: process.env.PASSWORD || 'admin123',
-    DB: process.env.DB || 'testdb'
+    DB: process.env.DB || 'postgres'
 };
 export default config;

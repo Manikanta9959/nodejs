@@ -18,10 +18,11 @@ PASSWORD=
 HOST=
 PORT=
 
+APP_PORT=
 
 ##Run the application:
 node main.js
 
 ##Access the Swagger documentation:
-You can view the Swagger API documentation by navigating to: http://localhost:4000/docs
+You can view the Swagger API documentation by navigating to: http://localhost:{APP_PORT}/docs
 Test the endpoints: Use the Swagger UI to test the available API endpoints.
